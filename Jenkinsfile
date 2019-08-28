@@ -5,7 +5,9 @@ pipeline {
         stage ('create environment') {
             
             steps{
-                sh 'virtualenv env && source env/bin/activate && pip install --upgrade -r requirements.txt'
+                sh 'virtualenv --python=python34 venv'
+                sh 'source venv/bin/activate'
+                sh 'pip install -r requirements.txt'
                  }
             }
         
