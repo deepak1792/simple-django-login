@@ -5,7 +5,11 @@ pipeline {
         stage ('create environment') {
             
             steps{
-                    git deepak1792: 'yadav9412543763', url: 'https://github.com/deepak1792/simple-django-login.git'
+                git branch: 'master',
+                deepak1792: 'yadav9412543763',
+                url: 'https://github.com/deepak1792/simple-django-login.git'
+
+            sh "ls -lat"
                  }
             }
         stage ('create environment') {
