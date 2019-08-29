@@ -17,7 +17,7 @@ pipeline {
            
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-                sh 'python -m pip install django==1.9.7 --user'
+                sh 'python3 -m pip install django==1.9.7 --user'
                 }
               }
             }
@@ -27,7 +27,7 @@ pipeline {
            
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-                sh 'python manage.py makemigrations && python manage.py migrate'
+                sh 'python3 manage.py makemigrations && python3 manage.py migrate'
                 }
                  }
             }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"])
                 {
-                sh 'python manage.py test'
+                sh 'python3 manage.py test'
                 }
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"])
                 {
-                sh 'python manage.py runserver'
+                sh 'python3 manage.py runserver'
                 }
                 }
             }
