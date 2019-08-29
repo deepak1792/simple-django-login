@@ -31,6 +31,17 @@ pipeline {
                 }
                  }
             }
+        
+        stage('Test environment') {
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"])
+                {
+                     sh 'pip list'
+                     sh 'which pip'
+                     sh 'which python'
+                }
+            }
+        }
 
         stage ('Testing Stage') {
 
