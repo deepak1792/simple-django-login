@@ -40,7 +40,6 @@ pipeline {
                 sh 'python3 manage.py test'
                 }
                 }
-            }
-        
+            }   
     }
 }
