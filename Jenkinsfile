@@ -1,11 +1,15 @@
 pipeline {
-    agent { 
-           docker { 
-               image 'python:3.6'
-           } 
-          }
+    agent any
 
     stages {
+       
+        stage('Python Install') {
+            agent {         
+                docker {          
+                image 'python:3.6'         
+             }    
+            }
+        }
        
         stage ('Checkout') {
            
