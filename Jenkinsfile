@@ -2,35 +2,52 @@ pipeline {
     agent { docker { image 'python:3.6' } }
 
     stages {
-        stage ('create environment') {
-            
+       
+        stage ('Checkout') {
+           
             steps{
                 git branch: 'master',
+                credentialsId: '79cea412-cbec-4d63-b91e-61fd616f0a46',
                 url: 'https://github.com/deepak1792/simple-django-login.git'
-
-            sh "ls -lat"
+                sh "ls -lat"
                  }
             }
-        stage ('create environment') {
-            
+   
+        stage ('install req') {
+           
             steps{
-                sh 'virtualenv -p python3.6 venv'
-                sh 'source venv/bin/activate'
-                sh 'pip install -r requirements.txt'
-                 }
+                withEnv(["HOME=${env.WORKSPACE}"]){
+                sh 'python -m pip install django==1.9.7 --user'
+                }
+              }
             }
-        
+       
+       
         stage ('Compile Stage') {
-            
+           
             steps{
-                sh 'source env/bin/activate && python ./manage.py makemigrations && python ./manage.py migrate'
+                withEnv(["HOME=${env.WORKSPACE}"]){
+                sh 'python manage.py makemigrations && python manage.py migrate'
+                }
                  }
             }
 
         stage ('Testing Stage') {
 
             steps {
-                sh 'source env/bin/activate && python ./manage.py test'
+                withEnv(["HOME=${env.WORKSPACE}"])
+                {
+                sh 'python manage.py test'
+                }
+                }
+            }
+        stage ('Run server') {
+
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"])
+                {
+                sh 'python manage.py runserver'
+                }
                 }
             }
     }
