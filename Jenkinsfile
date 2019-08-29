@@ -6,7 +6,6 @@ pipeline {
             
             steps{
                 git branch: 'master',
-                deepak1792: 'yadav9412543763',
                 url: 'https://github.com/deepak1792/simple-django-login.git'
 
             sh "ls -lat"
