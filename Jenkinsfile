@@ -36,9 +36,9 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"])
                 {
-                     sh 'pip list'
-                     sh 'which pip'
-                     sh 'which python'
+                     sh 'pip3 list'
+                     sh 'which pip3'
+                     sh 'which python3'
                 }
             }
         }
