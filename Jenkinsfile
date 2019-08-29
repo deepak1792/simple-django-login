@@ -7,7 +7,7 @@ pipeline {
            
             steps{
                 git branch: 'master',
-                credentialsId: '79cea412-cbec-4d63-b91e-61fd616f0a46',
+                credentialsId: '42018f3f-fd55-4d0a-8b73-7ab54bdfeec5',
                 url: 'https://github.com/deepak1792/simple-django-login.git'
                 sh "ls -lat"
                  }
