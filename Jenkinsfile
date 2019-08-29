@@ -41,14 +41,6 @@ pipeline {
                 }
                 }
             }
-        stage ('Run server') {
-
-            steps {
-                withEnv(["HOME=${env.WORKSPACE}"])
-                {
-                sh 'python3 manage.py runserver'
-                }
-                }
-            }
+        
     }
 }
